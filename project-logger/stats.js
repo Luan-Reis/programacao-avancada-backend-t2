@@ -34,6 +34,7 @@ setInterval( () => {
     console.log('++++++ MEMORY STATS +++++++')
     console.table(stats)
 
+    // método log mostra o valor passado em um documento ou no terminal
     log('Rodando...', JSON.stringify(stats))
     
 }, 1000)
