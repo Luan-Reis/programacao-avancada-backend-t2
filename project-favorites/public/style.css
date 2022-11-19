@@ -9,7 +9,7 @@ html {
 body {
     font-family: sans-serif;
     
-    background: #715;
+    background: rgb(119, 17, 85);
 }
 
 h1 {
@@ -24,7 +24,7 @@ li {
 }
 
 input {
-    width: 50%;
+    /*width: 50%;*/
     padding: 8px 16px;
     margin-bottom: 32px;
     
@@ -34,6 +34,8 @@ input {
     font-size: 1.6rem;
     font-weight: 300;
 }
+
+
 
 ul {
     background: white;
@@ -49,7 +51,7 @@ ul {
 
 
 header {
-    background: #333;
+    background: rgb(0, 0, 0);
 
     display: flex;
     justify-content: space-between;
@@ -58,4 +60,20 @@ header {
 
 header, footer {
     padding: 0.5em;
+    display: block;
+}
+
+footer {
+    background: rgb(180, 27, 27);
+
+    margin-top: auto;
+    margin-left: auto;
+}
+
+main {
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+    height: 45rem;
 }
