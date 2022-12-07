@@ -7,6 +7,17 @@ const path = require('path')
 // Importação do documento urls.json. Nesse momento do código, o conteúdo do documento vai para o objeto data.
 const data = require('./urls.json')
 
+function writeFile(cb){
+    fs.writeFile(
+        path.join(__dirname, 'urls.json'),
+        JSON.stringify(data, null, 2),
+        err => {
+            if(err) throw err
+            cb('Sucesso bro!')
+        }
+    )
+}
+
 // Servidor rodando na porta 3000.
 http.createServer((req, res) => {
 
@@ -14,14 +25,18 @@ http.createServer((req, res) => {
     const { name, url, del } = URL.parse(req.url, true).query
 
     // Mostrar o conteúdo do JSON.
-    if (!name || !url)
-        return res.end('show')
+    if (!name || !url) {
+        return res.end(JSON.stringify(data))
+    }
 
     // Delete - apagar do JSON.
     if (del) {
-        return res.end('delete')
+        data.urls = data.urls.filter(item => item.url != url)
+        
+        return writeFile(message => res.end(message))
     }
 
-    return res.end('create')
-
+    data.urls.push({name, url})
+    return writeFile(message => res.end(message))
+    
 }).listen(3000, () => console.log('Api is running.'))
